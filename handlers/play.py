@@ -81,7 +81,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
                 await f.close()
 
     image1 = Image.open("./background.png")
-    image2 = Image.open("etc/837707.1.jpg")
+    image2 = Image.open("etc/Saber2.jpg")
     image3 = changeImageSize(1280, 720, image1)
     image4 = changeImageSize(1280, 720, image2)
     image5 = image3.convert("RGBA")
@@ -89,16 +89,6 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     Image.alpha_composite(image5, image6).save("temp.png")
     img = Image.open("temp.png")
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("etc/font.otf", 32)
-    draw.text((190, 550), f"Title: {title}", (255, 255, 255), font=font)
-    draw.text((190, 590), f"Duration: {duration}", (255, 255, 255), font=font)
-    draw.text((190, 630), f"Views: {views}", (255, 255, 255), font=font)
-    draw.text(
-        (190, 670),
-        f"Added By: {requested_by}",
-        (255, 255, 255),
-        font=font,
-    )
     img.save("final.png")
     os.remove("temp.png")
     os.remove("background.png")
@@ -174,9 +164,9 @@ async def play(_, message: Message):
     global que
     global useer
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("**Musicplayer is Disable, ask admin for Enable it!**")
+        await message.reply("**Aku sedang off, minta Admin bangsat buat nyalain😡**")
         return
-    lel = await message.reply("🔄 **Processing...**")
+    lel = await message.reply("🔄 **Sedang Berproses...**")
 
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
@@ -199,7 +189,7 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
+                        "<b>Jadiin aku Admin dulu sayang🥵</b>",
                     )
                     return
 
@@ -207,10 +197,10 @@ async def play(_, message: Message):
                     await USER.join_chat(invitelink)
                     await USER.send_message(
                         message.chat.id,
-                        "Assistant joined this group for playing music in VC",
+                        "Assistant bergabung mau ngerusuh di video chat",
                     )
                     await lel.edit(
-                        "<b>Assistant joined this chat</b>",
+                        "<b>Assistant telah bergabung di video chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -238,7 +228,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Batas durasi musiknya cuma {DURATION_LIMIT} menit goblok"
             )
 
         file_name = get_file_name(audio)
@@ -251,10 +241,10 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🚨 Support", url="t.me/OdaSupport"),
+                    InlineKeyboardButton("🚨 Team Bot", url="t.me/OdaSupport"),
                     InlineKeyboardButton("📡 Updates", url="t.me/UserLazyXBot"),
                 ],
-                [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                [InlineKeyboardButton(text="👍 Subs", url="t.me/yadibuka")],
             ]
         )
 
