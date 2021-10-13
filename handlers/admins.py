@@ -27,7 +27,7 @@ async def resume(_, message: Message):
     await message.reply_text("▶️ Mari Kita Goyang Lagi.")
 
 
-@Client.on_message(command(["end", "stop"]) & other_filters)
+@Client.on_message(command(["endm", "stopm"]) & other_filters)
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
@@ -40,7 +40,7 @@ async def stop(_, message: Message):
     await message.reply_text("❌ Lagu Lu Gaenak Bangsat!!!")
 
 
-@Client.on_message(command("skip") & other_filters)
+@Client.on_message(command("skipm") & other_filters)
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
