@@ -89,7 +89,7 @@ async def start(client: Client, message: Message):
 async def help(client: Client, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.mention()}!
-\n/play (song title/link/audio) — To Play the song you requested via YouTube
+\n/playm (song title/link/audio) — To Play the song you requested via YouTube
 /song (song title) - To Download songs from YouTube
 /search (video title) — To Search Videos on YouTube with details
 \n**Admins Only:**
@@ -116,7 +116,7 @@ async def ping_pong(client: Client, m: Message):
     start = time()
     m_reply = await m.reply_text("Pinging...")
     delta_ping = time() - start
-    await m_reply.edit_text(f"🏓 **PONG!!**\n" f"`{delta_ping * 1000:.3f} ms`")
+    await m_reply.edit_text(f"🏓 **PINGPANGPENGPONG!!**\n" f"`{delta_ping * 1000:.3f} ms`")
 
 
 @Client.on_message(
