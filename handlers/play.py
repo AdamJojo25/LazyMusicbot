@@ -282,7 +282,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("🚨 Support", url="t.me/OdaSupport"),
                         InlineKeyboardButton("📡 Updates", url="t.me/UserLazyXBot"),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="👍 Subs", url="t.me/yadibuka")],
                 ]
             )
 
@@ -297,7 +297,7 @@ async def play(_, message: Message):
 
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Batas durasi musiknya cuma {DURATION_LIMIT} menit Goblok"
             )
             return
         requested_by = message.from_user.first_name
@@ -306,12 +306,12 @@ async def play(_, message: Message):
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "🧐 **Song not found! Try searching with the correct title\nExample » /play In The End\n\nChannel : @UserLazyXBot**"
+                "❌ Tulis judul lagunya GOBLOK, gitu aja gabisa"
             )
-        await lel.edit("🔎 **Finding the song...**")
+        await lel.edit("🔎 **Lagi Dicari, Sabar Goblok...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("🎵 **Processing sounds...**")
+        await lel.edit("🎵 **Lagi Diproses, Sabar Goblok...**")
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -334,7 +334,7 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "❌ Song not found.\n\nTry another song or maybe spell it properly."
+                "❌ Lagu lu gaenak jadi gabisa diplay TOLOL, Cari dulu sana sampe mampus"
             )
             print(str(e))
             return
@@ -342,16 +342,16 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🚨 Support", url="t.me/OdaSupport"),
+                    InlineKeyboardButton("🚨 Team Bot", url="t.me/OdaSupport"),
                     InlineKeyboardButton("📡 Updates", url="t.me/UserLazyXBot"),
                 ],
-                [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                [InlineKeyboardButton(text="👍 Subs", url="t.me/yadibuka")],
             ]
         )
 
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Batas durasi musiknya cuma {DURATION_LIMIT} menit goblok"
             )
             return
         requested_by = message.from_user.first_name
@@ -362,7 +362,7 @@ async def play(_, message: Message):
         position = await queues.put(message.chat.id, file=file_path)
         await message.reply_photo(
             photo="final.png",
-            caption="**🎵 Song:** {}\n**🕒 Duration:** {} min\n**👤 Added By:** {}\n\n**#⃣ Queued Position:** {}".format(
+            caption="**🎵 Lagu:** {}\n**🕒 Durasi:** {} min\n**👤 Ditambahkan oleh:** {}\n\n**#⃣ Queued Position:** {}".format(
                 title,
                 duration,
                 message.from_user.mention(),
@@ -375,7 +375,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="**🎵 Song:** {}\n**🕒 Duration:** {} min\n**👤 Added By:** {}\n\n**▶️ Now Playing at `{}`...**".format(
+            caption="**🎵 Lagu:** {}\n**🕒 Durasi:** {} min\n**👤 Ditambahkan oleh:** {}\n\n**▶️ Sedand Berputar `{}`...**".format(
                 title, duration, message.from_user.mention(), message.chat.title
             ),
         )
