@@ -154,7 +154,7 @@ async def m_cb(b, cb):
 
 # play
 @Client.on_message(
-    command("play")
+    command("playm")
     & filters.group
     & ~filters.edited
     & ~filters.forwarded
